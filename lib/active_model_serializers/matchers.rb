@@ -18,11 +18,11 @@ module ActiveModel
           "have attribute #{name}"
         end
 
-        def failure_message_for_should
+        def failure_message
           %Q{expected "#{actual._root}" to be "#{name}", but it wasn't}
         end
 
-        def failure_message_for_should_not
+        def failure_message_when_negated
           %Q{expected "#{actual._root}" to be "#{name}", but it was}
         end
 
