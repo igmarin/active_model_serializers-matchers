@@ -89,7 +89,7 @@ module ActiveModel
         def matches?(actual)
           @actual = actual
 
-          return false unless attributes.has_key?(name)
+          return false unless attributes.include?(name)
           return true unless expected_key
           attributes[name] == expected_key
         end
