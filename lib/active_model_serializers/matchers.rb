@@ -105,7 +105,7 @@ module ActiveModel
         def failure_message_when_negated
           %Q{expected #{actual.inspect} to not include: "#{name}", but it did}
         end
-        
+
         def as(value)
           self.expected_key = value
           self
@@ -128,7 +128,7 @@ module ActiveModel
       def have_attribute(name)
         HaveAttribute.new name
       end
-      
+
 
       class AssociationMatcher
         attr_accessor :name, :actual, :expected_key
@@ -139,13 +139,13 @@ module ActiveModel
 
         def matches?(actual)
           @actual = actual
-          
+
           matched_association = associations.detect do |key, assc|
             key == name
           end
-          
+
           return false unless matched_association
-          
+
           if expected_key
             association_key = matched_association.last.options[:key]
             return false if association_key != expected_key

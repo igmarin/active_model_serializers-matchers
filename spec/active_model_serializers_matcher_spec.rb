@@ -11,21 +11,21 @@ describe ActiveModel::Serializers::Matchers do
     expect(serializer).to_not have_attribute :bar
     expect(serializer).to have_attribute :foo
   end
-  
+
   it "matches singular attributes" do
     serializer = Class.new ActiveModel::Serializer do
       attribute :foo
     end
-    
+
     expect(serializer).to_not have_attribute :bar
     expect(serializer).to have_attribute :foo
   end
-  
+
   it "matches attributes with keys" do
     serializer = Class.new ActiveModel::Serializer do
       attribute :foo, :key => :foo_name
     end
-    
+
     expect(serializer).to_not have_attribute :bar
     expect(serializer).to have_attribute :foo
     expect(serializer).to have_attribute(:foo).as(:foo_name)
