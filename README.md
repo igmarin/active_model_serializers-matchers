@@ -27,19 +27,19 @@ Here are some examples
 
 ```ruby
 describe BlogPostSerializer do
-   it { should have_attribute(:title) }
-   it { should have_attribute(:text) }
+   it { is_expected.to have_attribute(:title) }
+   it { is_expected.to have_attribute(:text) }
 
-   it { should have_one(:author) }
+   it { is_expected.to have_one(:author) }
 
-   it { should have_many(:comments) }
-   it { should have_many(:comments).as(:responses) }
+   it { is_expected.to have_many(:comments) }
+   it { is_expected.to have_many(:comments).as(:responses) }
 
-   it { should embed(:objects) }
+   it { is_expected.to embed(:objects) }
 
-   it { should include_root }
+   it { is_expected.to include_root }
 
-   it { should include_root(:blog_post) } # if you want to test the root is specifically set to a different value
+   it { is_expected.to include_root(:blog_post) } # if you want to test the root is specifically set to a different value
 end
 ```
 
