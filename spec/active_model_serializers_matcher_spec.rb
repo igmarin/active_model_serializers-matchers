@@ -32,6 +32,17 @@ describe ActiveModel::Serializers::Matchers do
     expect(serializer).to_not have_attribute(:foo).as(:another_name)
   end
 
+  it "has `have_serialized_attribute` matcher" do
+    serializer = Class.new ActiveModel::Serializer do
+      attribute :foo, :key => :foo_name
+    end
+
+    expect(serializer).to_not have_serialized_attribute :bar
+    expect(serializer).to have_serialized_attribute :foo
+    expect(serializer).to have_serialized_attribute(:foo).as(:foo_name)
+    expect(serializer).to_not have_serialized_attribute(:foo).as(:another_name)
+  end
+
   it "matches the embed setting" do
     serializer = Class.new ActiveModel::Serializer do
       embed :ids
@@ -70,6 +81,14 @@ describe ActiveModel::Serializers::Matchers do
       expect(serializer).to_not have_many(:bars)
     end
 
+    it "works with has_many via have_many_serialized" do
+      serializer = Class.new ActiveModel::Serializer do
+        has_many :foos
+      end
+
+      expect(serializer).to have_many_serialized(:foos)
+    end
+
     it "works with has_one" do
       serializer = Class.new ActiveModel::Serializer do
         has_one :foo
@@ -77,6 +96,15 @@ describe ActiveModel::Serializers::Matchers do
 
       expect(serializer).to have_one(:foo)
       expect(serializer).to_not have_one(:bar)
+    end
+
+    it "works with has_one via have_one_serialized" do
+      serializer = Class.new ActiveModel::Serializer do
+        has_one :foo
+      end
+
+      expect(serializer).to have_one_serialized(:foo)
+      expect(serializer).to_not have_one_serialized(:bar)
     end
 
     it "works with has_one key options" do

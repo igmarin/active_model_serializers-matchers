@@ -128,7 +128,7 @@ module ActiveModel
       def have_attribute(name)
         HaveAttribute.new name
       end
-
+      alias :have_serialized_attribute :have_attribute
 
       class AssociationMatcher
         attr_accessor :name, :actual, :expected_key
@@ -189,6 +189,8 @@ module ActiveModel
         AssociationMatcher.new(name)
       end
       alias :have_one :have_many
+      alias :have_many_serialized :have_many
+      alias :have_one_serialized :have_one
     end
   end
 end
