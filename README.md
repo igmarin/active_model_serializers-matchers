@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/ramontayag/active_model_serializers-matchers.svg)](https://travis-ci.org/ramontayag/active_model_serializers-matchers)
+
 # ActiveModelSerializer::Matchers
 
 RSpec Matchers for testing ActiveModel::Serializers
